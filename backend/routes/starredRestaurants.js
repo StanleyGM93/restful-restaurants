@@ -111,10 +111,14 @@ router.delete("/:id", (req, res) => {
 		restaurant.id !== restaurantToRemove.id;
 	});
 
-	res.status(200);
+	res.sendStatus(200);
 });
 /**
  * Feature 10: Updating your comment of a starred restaurant.
  */
+router.put("/:id", (req, res) => {
+	const { id } = req.params;
+	const { newComment } = req.body;
+});
 
 module.exports = router;
