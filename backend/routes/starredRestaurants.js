@@ -119,6 +119,17 @@ router.delete("/:id", (req, res) => {
 router.put("/:id", (req, res) => {
 	const { id } = req.params;
 	const { newComment } = req.body;
+
+	const restaurant = ALL_RESTAURANTS.find((restaurant) => restaurant.id === id);
+
+	if (!restaurant) {
+		res.sendStatus(404);
+		return;
+	}
+
+	restaurant.comment = newComment;
+
+	res.sendStatus(200);
 });
 
 module.exports = router;
